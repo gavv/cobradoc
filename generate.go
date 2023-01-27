@@ -67,6 +67,11 @@ func makeFormatInfo(cmd *cobra.Command, opts Options) formatInfo {
 	fmtInfo.Groups = makeGroupsInfo(cmd)
 
 	fmtInfo.GlobalFlagsBlock = makeFlagsBlock(cmd.PersistentFlags())
+	if fmtInfo.GlobalFlagsBlock == "" {
+		fmtInfo.HasGlobalFlags = false
+	} else {
+		fmtInfo.HasGlobalFlags = true
+	}
 
 	cmd.PersistentFlags().VisitAll(func(flag *pflag.Flag) {
 		fmtInfo.GlobalFlags = append(fmtInfo.GlobalFlags, makeFlagInfo(flag))

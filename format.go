@@ -14,6 +14,7 @@ type formatInfo struct {
 
 	GlobalFlags      []flagInfo
 	GlobalFlagsBlock string
+	HasGlobalFlags   bool
 
 	Groups []groupInfo
 }
@@ -55,7 +56,7 @@ var formatTemplates = map[Format]string{
 }
 
 var formatFuncs = map[Format]template.FuncMap{
-	Troff: template.FuncMap{
+	Troff: {
 		"upper": func(s string) string {
 			return strings.ToUpper(s)
 		},
@@ -71,7 +72,7 @@ var formatFuncs = map[Format]template.FuncMap{
 			return s
 		},
 	},
-	Markdown: template.FuncMap{
+	Markdown: {
 		"anchor": func(s string) string {
 			return "#" + strings.ReplaceAll(s, " ", "-")
 		},

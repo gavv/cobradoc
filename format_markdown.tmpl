@@ -12,11 +12,14 @@
 {{ .Name }} [command] [global flags] [command flags]
 ```
 
+{{- if .GlobalFlagsBlock }}
+
 ### Global Flags
 
 ```
 {{ .GlobalFlagsBlock -}}
 ```
+{{- end }}
 
 {{- range $group := .Groups }}
 
