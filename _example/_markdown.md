@@ -6,24 +6,24 @@ Example command using cobra and cobradoc.
 example [command] [global flags] [command flags]
 ```
 
-### Global Flags
+## Global Flags
 
 ```
   -v, --value string   string value
       --flag           boolean flag
 ```
 
-### Main Commands
+## Main Commands
 
 * [example hello](#example-hello)
 * [example bye](#example-bye)
 
-### Documentation Commands
+## Documentation Commands
 
 * [example man](#example-man)
 * [example markdown](#example-markdown)
 
-### Additional Commands
+## Additional Commands
 
 * [example help](#example-help)
 
