@@ -14,7 +14,6 @@ type formatInfo struct {
 
 	GlobalFlags      []flagInfo
 	GlobalFlagsBlock string
-	HasGlobalFlags   bool
 
 	Groups []groupInfo
 }
