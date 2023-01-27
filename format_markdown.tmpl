@@ -8,7 +8,7 @@
 {{ .ShortDescription }}
 {{- end }}
 
-```
+```text
 {{ .Name }} [command] [global flags] [command flags]
 ```
 
@@ -16,7 +16,7 @@
 
 ## Global Flags
 
-```
+```text
 {{ .GlobalFlagsBlock -}}
 ```
 {{- end }}
@@ -38,13 +38,13 @@
 
 {{ $command.Description }}
 
-```
+```text
 {{ $command.Usage }}
 ```
 
 ### Command Flags
 
-```
+```text
 {{ $command.FlagsBlock -}}
 ```
 {{- end }}
