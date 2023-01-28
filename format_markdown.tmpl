@@ -14,7 +14,7 @@
 
 {{- if .GlobalFlagsBlock }}
 
-## Global Flags
+### Global Flags
 
 ```text
 {{ .GlobalFlagsBlock -}}
@@ -23,7 +23,7 @@
 
 {{- range $group := .Groups }}
 
-## {{ $group.Title }}
+### {{ $group.Title }}
 {{ range $command := $group.Commands }}
 * [{{ $command.Path }}]({{ $command.Path | anchor }})
 {{- end }}
