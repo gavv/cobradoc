@@ -43,12 +43,21 @@ func prepareOptions(cmd *cobra.Command, opts *Options) {
 		opts.Date = time.Now().Format("Jan 2006")
 	}
 
+	if opts.Language == "" {
+		opts.Language = "en"
+	}
+
+	languageTag, err := language.Parse(opts.Language)
+	if err != nil {
+		languageTag = language.English
+	}
+
 	if opts.Header == "" {
-		opts.Header = cases.Title(language.AmericanEnglish).String(opts.Name) + " Manual"
+		opts.Header = cases.Title(languageTag).String(opts.Name) + " Manual"
 	}
 
 	if opts.Footer == "" {
-		opts.Footer = cases.Title(language.AmericanEnglish).String(opts.Name) + " Manual"
+		opts.Footer = cases.Title(languageTag).String(opts.Name) + " Manual"
 	}
 
 	if opts.ShortDescription == "" {
