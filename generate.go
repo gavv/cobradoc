@@ -3,11 +3,12 @@ package cobradoc
 import (
 	"bytes"
 	"io"
-	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 func generate(cmd *cobra.Command, fmt Format, opts Options, w io.Writer) error {
@@ -42,12 +43,21 @@ func prepareOptions(cmd *cobra.Command, opts *Options) {
 		opts.Date = time.Now().Format("Jan 2006")
 	}
 
+	if opts.Language == "" {
+		opts.Language = "en"
+	}
+
+	languageTag, err := language.Parse(opts.Language)
+	if err != nil {
+		languageTag = language.English
+	}
+
 	if opts.Header == "" {
-		opts.Header = strings.Title(opts.Name) + " Manual"
+		opts.Header = cases.Title(languageTag).String(opts.Name) + " Manual"
 	}
 
 	if opts.Footer == "" {
-		opts.Footer = strings.Title(opts.Name) + " Manual"
+		opts.Footer = cases.Title(languageTag).String(opts.Name) + " Manual"
 	}
 
 	if opts.ShortDescription == "" {

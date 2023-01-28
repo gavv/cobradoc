@@ -1,5 +1,5 @@
 ```
-EXAMPLE(1)                                   Example Manual                                  EXAMPLE(1)
+EXAMPLE(1)                                          Example Manual                                          EXAMPLE(1)
 
 NAME
        example - Example command
@@ -69,5 +69,5 @@ ADDITIONAL COMMANDS
 REPORTING BUGS
        Please report bugs at https://github.com/gavv/cobradoc
 
-Example Manual                                  Nov 2022                                     EXAMPLE(1)
+Example Manual                                         Jan 2023                                             EXAMPLE(1)
 ```

@@ -2,13 +2,13 @@
 
 Example command using cobra and cobradoc.
 
-```
+```text
 example [command] [global flags] [command flags]
 ```
 
 ### Global Flags
 
-```
+```text
   -v, --value string   string value
       --flag           boolean flag
 ```
@@ -33,13 +33,13 @@ example [command] [global flags] [command flags]
 
 Say hello
 
-```
+```text
 example hello [flags]
 ```
 
 ### Command Flags
 
-```
+```text
   -c, --count int   how many times to greet? (default 1)
   -h, --help        help for hello
 ```
@@ -48,13 +48,13 @@ example hello [flags]
 
 Say goodbye
 
-```
+```text
 example bye [flags]
 ```
 
 ### Command Flags
 
-```
+```text
   -n, --name string   who got the goodbye? (default "John")
   -h, --help          help for bye
 ```
@@ -65,13 +65,13 @@ example bye [flags]
 
 Generate manual page
 
-```
+```text
 example man [flags]
 ```
 
 ### Command Flags
 
-```
+```text
   -h, --help   help for man
 ```
 
@@ -79,13 +79,13 @@ example man [flags]
 
 Generate markdown page
 
-```
+```text
 example markdown [flags]
 ```
 
 ### Command Flags
 
-```
+```text
   -h, --help   help for markdown
 ```
 
@@ -95,12 +95,12 @@ example markdown [flags]
 
 Help about any command
 
-```
+```text
 example help [command] [flags]
 ```
 
 ### Command Flags
 
-```
+```text
   -h, --help   help for help
 ```

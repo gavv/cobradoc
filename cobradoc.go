@@ -25,6 +25,9 @@ type Options struct {
 	// In markdown, ignored
 	Date string
 
+	// BCP 47 language for converting the tool name to title case (defaults to "en")
+	Language string
+
 	// Page header (defaults to "{Name} Manual")
 	// In man page, located at the center of the top line
 	// In markdown, defines page header

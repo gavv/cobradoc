@@ -8,15 +8,18 @@
 {{ .ShortDescription }}
 {{- end }}
 
-```
+```text
 {{ .Name }} [command] [global flags] [command flags]
 ```
 
+{{- if .GlobalFlagsBlock }}
+
 ### Global Flags
 
-```
+```text
 {{ .GlobalFlagsBlock -}}
 ```
+{{- end }}
 
 {{- range $group := .Groups }}
 
@@ -35,13 +38,13 @@
 
 {{ $command.Description }}
 
-```
+```text
 {{ $command.Usage }}
 ```
 
 ### Command Flags
 
-```
+```text
 {{ $command.FlagsBlock -}}
 ```
 {{- end }}
