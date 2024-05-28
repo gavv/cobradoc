@@ -1,4 +1,4 @@
-# cobradoc [![GoDev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/gavv/cobradoc) [![Build](https://github.com/gavv/cobradoc/workflows/build/badge.svg)](https://github.com/gavv/cobradoc/actions) [![GitHub release](https://img.shields.io/github/tag/gavv/cobradoc.svg)](https://github.com/gavv/cobradoc/tags)
+# cobradoc [![GoDev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/gavv/cobradoc) [![Build](https://github.com/gavv/cobradoc/workflows/build/badge.svg)](https://github.com/gavv/cobradoc/actions) [![GitHub release](https://img.shields.io/github/release/gavv/cobradoc.svg)](https://github.com/gavv/cobradoc/releases)
 
 Alternative documentation generator for golang [Cobra](https://github.com/spf13/cobra).
 
