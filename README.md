@@ -72,7 +72,7 @@ This package is inspired by [cobraman](https://github.com/rayjohnson/cobraman) b
 Authors
 -------
 
-See [here](https://github.com/gavv/cobradoc/graphs/contributors).
+See [here](AUTHORS.md).
 
 License
 -------

@@ -33,7 +33,7 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Build
-        run: go get -v .
+        run: make build
 
       - name: Example
-        run: make -C _example
+        run: make example
