@@ -6,7 +6,7 @@
 
 [v1.2.0]: https://github.com/gavv/cobradoc/releases/tag/v1.2.0
 
-[gh-2]: https://github.com/gavv/httpexpect/issues/2
+[gh-2]: https://github.com/gavv/cobradoc/issues/2
 
 ## [v1.1.0][v1.1.0] - 28 Jan 2023
 
@@ -15,7 +15,7 @@
 
 [v1.1.0]: https://github.com/gavv/cobradoc/releases/tag/v1.1.0
 
-[gh-1]: https://github.com/gavv/httpexpect/issues/1
+[gh-1]: https://github.com/gavv/cobradoc/issues/1
 
 ## [v1.0.0][v1.0.0] - 28 Jan 2023
 
