@@ -1,5 +1,5 @@
 ```
-EXAMPLE(1)                                      Example Manual                                     EXAMPLE(1)
+EXAMPLE(1)                           Example Manual                          EXAMPLE(1)
 
 NAME
        example - Example command
@@ -59,7 +59,8 @@ DOCUMENTATION COMMANDS
 
 ADDITIONAL COMMANDS
        example help [command] [flags]
-              Help about any command
+              Help provides help for any command in the application.  Simply type exam‐
+              ple help [path to command] for full details.
 
               Command flags:
 
@@ -69,5 +70,5 @@ ADDITIONAL COMMANDS
 REPORTING BUGS
        Please report bugs at https://github.com/gavv/cobradoc
 
-Example Manual                                     Mar 2025                                        EXAMPLE(1)
+Example Manual                          May 2025                             EXAMPLE(1)
 ```

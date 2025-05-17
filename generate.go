@@ -12,7 +12,7 @@ import (
 )
 
 func generate(cmd *cobra.Command, fmt Format, opts Options, w io.Writer) error {
-	prepareCommand(cmd)
+	prepareCommand(cmd, opts)
 
 	prepareOptions(cmd, &opts)
 
@@ -21,12 +21,22 @@ func generate(cmd *cobra.Command, fmt Format, opts Options, w io.Writer) error {
 	return format(fmt, fmtInfo, w)
 }
 
-func prepareCommand(cmd *cobra.Command) {
+func prepareCommand(cmd *cobra.Command, opts Options) {
 	cmd.InitDefaultHelpCmd()
 	cmd.InitDefaultHelpFlag()
 
+	if opts.HideHelp {
+		if cmd.Name() == "help" {
+			cmd.Hidden = true
+		}
+		if cmd.Flags().Lookup("help") != nil {
+			// HasAvailableFlags and PrintDefaults will exclude --help
+			cmd.Flags().MarkHidden("help")
+		}
+	}
+
 	for _, subCmd := range cmd.Commands() {
-		prepareCommand(subCmd)
+		prepareCommand(subCmd, opts)
 	}
 }
 
@@ -75,11 +85,18 @@ func makeFormatInfo(cmd *cobra.Command, opts Options) formatInfo {
 	fmtInfo.Options = opts
 	fmtInfo.Groups = makeGroupsInfo(cmd)
 
-	fmtInfo.GlobalFlagsBlock = makeFlagsBlock(cmd.PersistentFlags())
+	globalFlags := cmd.PersistentFlags()
 
-	cmd.PersistentFlags().VisitAll(func(flag *pflag.Flag) {
-		fmtInfo.GlobalFlags = append(fmtInfo.GlobalFlags, makeFlagInfo(flag))
-	})
+	if globalFlags.HasAvailableFlags() {
+		fmtInfo.GlobalFlagsBlock = makeFlagsBlock(globalFlags)
+
+		globalFlags.VisitAll(func(flag *pflag.Flag) {
+			if flag.Hidden {
+				return
+			}
+			fmtInfo.GlobalFlags = append(fmtInfo.GlobalFlags, makeFlagInfo(flag))
+		})
+	}
 
 	return fmtInfo
 }
@@ -92,14 +109,14 @@ func makeGroupsInfo(cmd *cobra.Command) []groupInfo {
 
 		grpInfo.Title = grp.Title
 
-		for _, c := range getCommands(cmd) {
-			if len(cmd.Groups()) != 0 && c.GroupID != grp.ID {
+		for _, subCmd := range getCommands(cmd) {
+			if subCmd.Hidden || len(subCmd.Deprecated) != 0 {
 				continue
 			}
-			if c.Hidden || len(c.Deprecated) != 0 {
+			if len(cmd.Groups()) != 0 && subCmd.GroupID != grp.ID {
 				continue
 			}
-			grpInfo.Commands = append(grpInfo.Commands, makeCommandInfo(c))
+			grpInfo.Commands = append(grpInfo.Commands, makeCommandInfo(subCmd))
 		}
 
 		if len(grpInfo.Commands) == 0 {
@@ -118,17 +135,24 @@ func makeCommandInfo(cmd *cobra.Command) commandInfo {
 	cmdInfo.Path = cmd.CommandPath()
 	cmdInfo.Usage = cmd.UseLine()
 
-	if cmd.IsAvailableCommand() && cmd.Long != "" {
+	if cmd.Long != "" {
 		cmdInfo.Description = cmd.Long
 	} else {
 		cmdInfo.Description = cmd.Short
 	}
 
-	cmdInfo.FlagsBlock = makeFlagsBlock(cmd.NonInheritedFlags())
+	cmdFlags := cmd.NonInheritedFlags()
 
-	cmd.NonInheritedFlags().VisitAll(func(flag *pflag.Flag) {
-		cmdInfo.Flags = append(cmdInfo.Flags, makeFlagInfo(flag))
-	})
+	if cmdFlags.HasAvailableFlags() {
+		cmdInfo.FlagsBlock = makeFlagsBlock(cmdFlags)
+
+		cmdFlags.VisitAll(func(flag *pflag.Flag) {
+			if flag.Hidden {
+				return
+			}
+			cmdInfo.Flags = append(cmdInfo.Flags, makeFlagInfo(flag))
+		})
+	}
 
 	return cmdInfo
 }

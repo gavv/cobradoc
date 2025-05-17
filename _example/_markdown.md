@@ -93,7 +93,8 @@ example markdown [flags]
 
 ## `example help`
 
-Help about any command
+Help provides help for any command in the application.
+Simply type example help [path to command] for full details.
 
 ```text
 example help [command] [flags]

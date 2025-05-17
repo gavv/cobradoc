@@ -51,6 +51,9 @@ type Options struct {
 	// Array of additional sections (optional)
 	// Sections are added to the end of the document
 	ExtraSections []ExtraSection
+
+	// Hide help command and --help flags from generated document
+	HideHelp bool
 }
 
 // Extra section contents

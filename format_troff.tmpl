@@ -10,6 +10,7 @@
 {{- if .LongDescription }}
 {{ .LongDescription | escape }}
 {{ end }}
+{{- if .GlobalFlags }}
 Global flags:
 {{ range $flag := .GlobalFlags }}
 .TP
@@ -28,12 +29,14 @@ Global flags:
 {{- end }}
 {{ $flag.Description | escape }}
 {{- end }}
+{{- end }}
 {{- range $group := .Groups }}
 .SH {{ $group.Title | upper | escape }}
 {{- range $command := $group.Commands }}
 .TP
 \fI{{ $command.Usage | escape }}\fR
 {{ $command.Description | escape }}
+{{ if $command.Flags }}
 .RS
 
 Command flags:
@@ -56,6 +59,7 @@ Command flags:
 {{- end }}
 .RE
 {{- end }}
+{{ end }}
 {{- end }}
 {{- range $section := .ExtraSections }}
 .SH {{ $section.Title | upper | escape }}

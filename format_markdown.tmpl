@@ -42,11 +42,14 @@
 {{ $command.Usage }}
 ```
 
+{{- if $command.FlagsBlock }}
+
 ### Command Flags
 
 ```text
 {{ $command.FlagsBlock -}}
 ```
+{{- end }}
 {{- end }}
 {{- end }}
 {{- range $section := .ExtraSections }}
