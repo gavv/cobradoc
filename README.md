@@ -69,6 +69,10 @@ Credits
 
 This package is inspired by [cobraman](https://github.com/rayjohnson/cobraman) by Ray Johnson, but uses single-page approach and adds support for command groups.
 
+## History
+
+You can find changelog here: [changelog](CHANGES.md).
+
 Authors
 -------
 

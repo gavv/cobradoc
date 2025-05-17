@@ -8,7 +8,7 @@ build:
 
 example: build
 	./_example/example markdown > _example/_markdown.md
-	( echo '```' ; man <(./_example/example man) ; echo '```' ) > _example/_manpage.md
+	( echo '```' ; COLUMNS=90 man <(./_example/example man) ; echo '```' ) > _example/_manpage.md
 
 tidy:
 	go mod tidy -v
