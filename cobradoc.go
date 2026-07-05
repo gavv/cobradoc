@@ -52,8 +52,20 @@ type Options struct {
 	// Sections are added to the end of the document
 	ExtraSections []ExtraSection
 
+	// List of commands to exclude, in form "foo" or "foo subfoo"
+	HideCommands []string
+
+	// Hide parent commands that have subcommands from generated document
+	HideParents bool
+
+	// Hide completion command from generated document
+	HideCompletion bool
+
 	// Hide help command and --help flags from generated document
 	HideHelp bool
+
+	// Render nested markdown sections for nested subcommands
+	RenderHierarchy bool
 }
 
 // Extra section contents

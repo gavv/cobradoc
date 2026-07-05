@@ -3,6 +3,7 @@ package cobradoc
 import (
 	"bytes"
 	"io"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -35,8 +36,20 @@ func prepareCommand(cmd *cobra.Command, opts Options) {
 		}
 	}
 
+	if opts.HideCompletion && cmd.Name() == "completion" {
+		hideCommandTree(cmd)
+	}
+
+	if isHiddenCommand(cmd, opts.HideCommands) {
+		hideCommandTree(cmd)
+	}
+
 	for _, subCmd := range cmd.Commands() {
 		prepareCommand(subCmd, opts)
+	}
+
+	if opts.HideParents && hasVisibleSubCommands(cmd) {
+		cmd.Hidden = true
 	}
 }
 
@@ -129,11 +142,44 @@ func makeGroupsInfo(cmd *cobra.Command) []groupInfo {
 	return grpInfoList
 }
 
+func isHiddenCommand(cmd *cobra.Command, names []string) bool {
+	path := commandPath(cmd)
+	for _, name := range names {
+		if path == name {
+			return true
+		}
+	}
+	return false
+}
+
+func hideCommandTree(cmd *cobra.Command) {
+	cmd.Hidden = true
+	for _, subCmd := range cmd.Commands() {
+		hideCommandTree(subCmd)
+	}
+}
+
+func commandPath(cmd *cobra.Command) string {
+	path := cmd.CommandPath()
+	rootName := cmd.Root().Name()
+	return strings.TrimPrefix(path, rootName+" ")
+}
+
+func hasVisibleSubCommands(cmd *cobra.Command) bool {
+	for _, subCmd := range cmd.Commands() {
+		if !subCmd.Hidden && len(subCmd.Deprecated) == 0 {
+			return true
+		}
+	}
+	return false
+}
+
 func makeCommandInfo(cmd *cobra.Command) commandInfo {
 	var cmdInfo commandInfo
 
 	cmdInfo.Path = cmd.CommandPath()
 	cmdInfo.Usage = cmd.UseLine()
+	cmdInfo.Level = strings.Count(commandPath(cmd), " ")
 
 	if cmd.Long != "" {
 		cmdInfo.Description = cmd.Long

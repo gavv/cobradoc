@@ -27,6 +27,7 @@ type commandInfo struct {
 	Path        string
 	Usage       string
 	Description string
+	Level       int
 	Flags       []flagInfo
 	FlagsBlock  string
 }
@@ -74,6 +75,9 @@ var formatFuncs = map[Format]template.FuncMap{
 	Markdown: {
 		"anchor": func(s string) string {
 			return "#" + strings.ReplaceAll(s, " ", "-")
+		},
+		"sectionLevel": func(base, level int) string {
+			return strings.Repeat("#", base+level)
 		},
 	},
 }

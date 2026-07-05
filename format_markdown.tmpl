@@ -29,12 +29,13 @@
 {{- end }}
 {{- end }}
 
+{{- $renderHierarchy := .RenderHierarchy }}
 {{- range $group := .Groups }}
 
 # {{ $group.Title }}
 {{- range $command := $group.Commands }}
 
-## `{{ $command.Path }}`
+{{ if $renderHierarchy }}{{ sectionLevel 2 $command.Level }}{{ else }}##{{ end }} `{{ $command.Path }}`
 
 {{ $command.Description }}
 
@@ -44,7 +45,7 @@
 
 {{- if $command.FlagsBlock }}
 
-### Command Flags
+{{ if $renderHierarchy }}{{ sectionLevel 3 $command.Level }}{{ else }}###{{ end }} Command Flags
 
 ```text
 {{ $command.FlagsBlock -}}

@@ -19,11 +19,19 @@ Example
 
 [_example](_example) directory demonstrates usage of this package.
 
-It contains:
+It contains two examples, `hello` and `subcommands`.
 
-* [example cobra tool](_example/example.go)
-* [generated manual page](_example/_manpage.md)
-* [generated markdown](_example/_markdown.md)
+`hello`:
+
+* [source code](_example/hello/example.go)
+* [generated manual page](_example/hello/_manpage.md)
+* [generated markdown](_example/hello/_markdown.md)
+
+`subcommands`:
+
+* [source code](_example/subcommands/example.go)
+* [generated manual page](_example/subcommands/_manpage.md)
+* [generated markdown](_example/subcommands/_markdown.md)
 
 Usage
 -----
