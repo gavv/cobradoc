@@ -56,6 +56,7 @@ type Options struct {
 	HideCommands []string
 
 	// Hide parent commands that have subcommands from generated document
+	// With RenderHierarchy, parent headings and descriptions are kept, but usage and flags are hidden
 	HideParents bool
 
 	// Hide completion command from generated document
@@ -65,6 +66,7 @@ type Options struct {
 	HideHelp bool
 
 	// Render nested markdown sections for nested subcommands
+	// Doesn't take effect in troff backend
 	RenderHierarchy bool
 }
 

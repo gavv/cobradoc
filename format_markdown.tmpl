@@ -21,15 +21,16 @@
 ```
 {{- end }}
 
+{{- $renderHierarchy := .RenderHierarchy }}
 {{- range $group := .Groups }}
 
 ### {{ $group.Title }}
-{{ range $command := $group.Commands }}
-* [{{ $command.Path }}]({{ $command.Path | anchor }})
-{{- end }}
+{{ range $command := $group.Commands -}}
+{{ if $renderHierarchy }}{{ tocIndent $command.Level }}{{ end }}* [{{ $command.Path }}]({{ $command.Path | anchor }})
+{{ end -}}
 {{- end }}
 
-{{- $renderHierarchy := .RenderHierarchy }}
+{{- $hideParents := .HideParents }}
 {{- range $group := .Groups }}
 
 # {{ $group.Title }}
@@ -38,6 +39,7 @@
 {{ if $renderHierarchy }}{{ sectionLevel 2 $command.Level }}{{ else }}##{{ end }} `{{ $command.Path }}`
 
 {{ $command.Description }}
+{{- if not (and $renderHierarchy $hideParents $command.HasChildren) }}
 
 ```text
 {{ $command.Usage }}
@@ -50,6 +52,7 @@
 ```text
 {{ $command.FlagsBlock -}}
 ```
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

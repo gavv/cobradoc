@@ -17,7 +17,7 @@ DESCRIPTION
 
        --flag boolean flag
 
-MAIN COMMANDS
+COMMANDS
        example main hello [flags]
               Say hello
 
@@ -34,7 +34,6 @@ MAIN COMMANDS
               -n, --name=John
                      who got the goodbye?
 
-DOCUMENTATION COMMANDS
        example docs man [flags]
               Generate manual page
 

@@ -28,6 +28,7 @@ type commandInfo struct {
 	Usage       string
 	Description string
 	Level       int
+	HasChildren bool
 	Flags       []flagInfo
 	FlagsBlock  string
 }
@@ -78,6 +79,9 @@ var formatFuncs = map[Format]template.FuncMap{
 		},
 		"sectionLevel": func(base, level int) string {
 			return strings.Repeat("#", base+level)
+		},
+		"tocIndent": func(level int) string {
+			return strings.Repeat("  ", level)
 		},
 	},
 }

@@ -14,18 +14,18 @@ example [command] [global flags] [command flags]
 ```
 
 ### Main Commands
-
 * [example hello](#example-hello)
 * [example bye](#example-bye)
 
-### Documentation Commands
 
+### Documentation Commands
 * [example man](#example-man)
 * [example markdown](#example-markdown)
 
-### Additional Commands
 
+### Additional Commands
 * [example help](#example-help)
+
 
 # Main Commands
 

@@ -13,6 +13,10 @@ import (
 )
 
 func generate(cmd *cobra.Command, fmt Format, opts Options, w io.Writer) error {
+	if fmt != Markdown {
+		opts.RenderHierarchy = false
+	}
+
 	prepareCommand(cmd, opts)
 
 	prepareOptions(cmd, &opts)
@@ -48,7 +52,7 @@ func prepareCommand(cmd *cobra.Command, opts Options) {
 		prepareCommand(subCmd, opts)
 	}
 
-	if opts.HideParents && hasVisibleSubCommands(cmd) {
+	if opts.HideParents && !opts.RenderHierarchy && hasVisibleSubCommands(cmd) {
 		cmd.Hidden = true
 	}
 }
@@ -180,6 +184,7 @@ func makeCommandInfo(cmd *cobra.Command) commandInfo {
 	cmdInfo.Path = cmd.CommandPath()
 	cmdInfo.Usage = cmd.UseLine()
 	cmdInfo.Level = strings.Count(commandPath(cmd), " ")
+	cmdInfo.HasChildren = hasVisibleSubCommands(cmd)
 
 	if cmd.Long != "" {
 		cmdInfo.Description = cmd.Long

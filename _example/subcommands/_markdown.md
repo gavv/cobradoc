@@ -13,27 +13,20 @@ example [command] [global flags] [command flags]
       --flag           boolean flag
 ```
 
-### Main Commands
-
+### Commands
 * [example main](#example-main)
-* [example main hello](#example-main-hello)
-* [example main bye](#example-main-bye)
-
-### Documentation Commands
-
+  * [example main hello](#example-main-hello)
+  * [example main bye](#example-main-bye)
 * [example docs](#example-docs)
-* [example docs man](#example-docs-man)
-* [example docs markdown](#example-docs-markdown)
+  * [example docs man](#example-docs-man)
+  * [example docs markdown](#example-docs-markdown)
 
-# Main Commands
+
+# Commands
 
 ## `example main`
 
 Run main commands
-
-```text
-example main [flags]
-```
 
 ### `example main hello`
 
@@ -63,15 +56,9 @@ example main bye [flags]
   -n, --name string   who got the goodbye? (default "John")
 ```
 
-# Documentation Commands
-
 ## `example docs`
 
 Generate documentation
-
-```text
-example docs [flags]
-```
 
 ### `example docs man`
 

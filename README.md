@@ -19,13 +19,13 @@ Example
 
 [_example](_example) directory demonstrates usage of this package.
 
-It contains two examples, `hello` and `subcommands`.
+It contains two examples, `groups` and `subcommands`.
 
-`hello`:
+`groups`:
 
-* [source code](_example/hello/example.go)
-* [generated manual page](_example/hello/_manpage.md)
-* [generated markdown](_example/hello/_markdown.md)
+* [source code](_example/groups/example.go)
+* [generated manual page](_example/groups/_manpage.md)
+* [generated markdown](_example/groups/_markdown.md)
 
 `subcommands`:
 

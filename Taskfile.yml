@@ -10,28 +10,28 @@ tasks:
   tidy:
     cmds:
       - go mod tidy -v
-      - cd _example/hello && go mod tidy -v
+      - cd _example/groups && go mod tidy -v
       - cd _example/subcommands && go mod tidy -v
 
   build:
     cmds:
       - go build .
-      - cd _example/hello && go build -o example
+      - cd _example/groups && go build -o example
       - cd _example/subcommands && go build -o example
 
   example:
     cmds:
       - |
-        ./_example/hello/example markdown > _example/hello/_markdown.md
+        ./_example/groups/example markdown > _example/groups/_markdown.md
 
       - |
-        ./_example/hello/example man > _example/hello/_manpage.tmp
+        ./_example/groups/example man > _example/groups/_manpage.tmp
         (
           echo '```'
-          COLUMNS=90 man -l ./_example/hello/_manpage.tmp
+          COLUMNS=90 man -l ./_example/groups/_manpage.tmp
           echo '```'
-        ) > _example/hello/_manpage.md
-        rm _example/hello/_manpage.tmp
+        ) > _example/groups/_manpage.md
+        rm _example/groups/_manpage.tmp
 
       - |
         ./_example/subcommands/example docs markdown > _example/subcommands/_markdown.md
@@ -47,7 +47,7 @@ tasks:
 
   fmt:
     cmds:
-      - gofmt -s -w . ./_example/hello ./_example/subcommands
+      - gofmt -s -w . ./_example/groups ./_example/subcommands
 
   md:
     cmds:
