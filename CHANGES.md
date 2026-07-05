@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.3.1][v1.3.1] - 05 Jul 2026
+
+* Fix markdown TOC rendering when `Options.RenderHierarchy` is enabled
+* Fix `Options.HideParents` with `Options.RenderHierarchy` to keep parent headings and descriptions, while hiding their usage and flags
+* Fix `Options.HideParents` in troff output to hide non-leaf commands entirely
+* Rename `hello` example to `groups`
+
+[v1.3.1]: https://github.com/gavv/cobradoc/releases/tag/v1.3.1
+
 ## [v1.3.0][v1.3.0] - 05 Jul 2026
 
 * Add `Options.HideCommands` to exclude selected commands from generated docs
