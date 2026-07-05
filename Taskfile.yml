@@ -1,0 +1,38 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: tidy
+      - task: build
+      - task: example
+
+  tidy:
+    cmds:
+      - go mod tidy -v
+      - cd _example && go mod tidy -v
+
+  build:
+    cmds:
+      - go build .
+      - cd _example && go build -o example
+
+  example:
+    cmds:
+      - ./_example/example markdown > _example/_markdown.md
+      - |
+        ./_example/example man > _example/_manpage.tmp
+        (
+          echo '```'
+          COLUMNS=90 man -l ./_example/_manpage.tmp
+          echo '```'
+        ) > _example/_manpage.md
+        rm _example/_manpage.tmp
+
+  fmt:
+    cmds:
+      - gofmt -s -w . ./_example
+
+  md:
+    cmds:
+      - md-authors --format modern --append AUTHORS.md
