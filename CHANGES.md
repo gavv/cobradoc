@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.3.2][v1.3.2] - 06 Jul 2026
+
+* Fix markdown TOC compatibility with Python Markdown
+* Render command aliases in markdown and troff output
+
+[v1.3.2]: https://github.com/gavv/cobradoc/releases/tag/v1.3.2
+
 ## [v1.3.1][v1.3.1] - 05 Jul 2026
 
 * Fix markdown TOC rendering when `Options.RenderHierarchy` is enabled
