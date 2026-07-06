@@ -185,6 +185,7 @@ func makeCommandInfo(cmd *cobra.Command) commandInfo {
 	cmdInfo.Usage = cmd.UseLine()
 	cmdInfo.Level = strings.Count(commandPath(cmd), " ")
 	cmdInfo.HasChildren = hasVisibleSubCommands(cmd)
+	cmdInfo.Aliases = cmd.Aliases
 
 	if cmd.Long != "" {
 		cmdInfo.Description = cmd.Long

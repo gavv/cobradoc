@@ -45,6 +45,11 @@
 {{ $command.Usage }}
 ```
 
+{{- if $command.Aliases }}
+
+**Aliases:** {{ join ", " (quoteAliases $command.Aliases) }}
+{{- end }}
+
 {{- if $command.FlagsBlock }}
 
 {{ if $renderHierarchy }}{{ sectionLevel 3 $command.Level }}{{ else }}###{{ end }} Command Flags

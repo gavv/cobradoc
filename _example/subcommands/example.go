@@ -19,8 +19,9 @@ var mainCmd = &cobra.Command{
 }
 
 var helloCmd = &cobra.Command{
-	Use:   "hello",
-	Short: "Say hello",
+	Use:     "hello",
+	Aliases: []string{"hi"},
+	Short:   "Say hello",
 	Run: func(cmd *cobra.Command, args []string) {
 		count, _ := cmd.Flags().GetInt("count")
 		for i := 0; i < count; i++ {
@@ -30,8 +31,9 @@ var helloCmd = &cobra.Command{
 }
 
 var byeCmd = &cobra.Command{
-	Use:   "bye",
-	Short: "Say goodbye",
+	Use:     "bye",
+	Aliases: []string{"goodbye", "farewell"},
+	Short:   "Say goodbye",
 	Run: func(cmd *cobra.Command, args []string) {
 		name, _ := cmd.Flags().GetString("name")
 		fmt.Printf("bye, %s!\n", name)

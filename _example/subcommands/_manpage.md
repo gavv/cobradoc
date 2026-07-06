@@ -21,6 +21,8 @@ COMMANDS
        example main hello [flags]
               Say hello
 
+              Aliases: hi
+
               Command flags:
 
               -c, --count=1
@@ -28,6 +30,8 @@ COMMANDS
 
        example main bye [flags]
               Say goodbye
+
+              Aliases: goodbye, farewell
 
               Command flags:
 

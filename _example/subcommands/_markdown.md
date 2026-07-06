@@ -36,6 +36,8 @@ Say hello
 example main hello [flags]
 ```
 
+**Aliases:** `hi`
+
 #### Command Flags
 
 ```text
@@ -49,6 +51,8 @@ Say goodbye
 ```text
 example main bye [flags]
 ```
+
+**Aliases:** `goodbye`, `farewell`
 
 #### Command Flags
 

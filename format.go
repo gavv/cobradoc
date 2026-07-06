@@ -29,6 +29,7 @@ type commandInfo struct {
 	Description string
 	Level       int
 	HasChildren bool
+	Aliases     []string
 	Flags       []flagInfo
 	FlagsBlock  string
 }
@@ -58,6 +59,9 @@ var formatTemplates = map[Format]string{
 
 var formatFuncs = map[Format]template.FuncMap{
 	Troff: {
+		"join": func(sep string, elems []string) string {
+			return strings.Join(elems, sep)
+		},
 		"upper": func(s string) string {
 			return strings.ToUpper(s)
 		},
@@ -74,6 +78,16 @@ var formatFuncs = map[Format]template.FuncMap{
 		},
 	},
 	Markdown: {
+		"join": func(sep string, elems []string) string {
+			return strings.Join(elems, sep)
+		},
+		"quoteAliases": func(elems []string) []string {
+			var quoted []string
+			for _, elem := range elems {
+				quoted = append(quoted, "`"+elem+"`")
+			}
+			return quoted
+		},
 		"anchor": func(s string) string {
 			return "#" + strings.ReplaceAll(s, " ", "-")
 		},

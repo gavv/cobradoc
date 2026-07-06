@@ -36,9 +36,12 @@ Global flags:
 .TP
 \fI{{ $command.Usage | escape }}\fR
 {{ $command.Description | escape }}
-{{ if $command.Flags }}
+{{ if or $command.Aliases $command.Flags }}
 .RS
-
+{{ if $command.Aliases }}
+Aliases: {{ join ", " $command.Aliases | escape }}
+{{ end }}
+{{ if $command.Flags }}
 Command flags:
 {{ range $flag := $command.Flags }}
 .TP
@@ -56,6 +59,7 @@ Command flags:
 {{- if $flag.ValueIsOptional -}} ] {{- end -}}
 {{- end }}
 {{ $flag.Description | escape }}
+{{- end }}
 {{- end }}
 .RE
 {{- end }}

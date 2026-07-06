@@ -24,6 +24,7 @@ var rootCmd = &cobra.Command{
 var helloCmd = &cobra.Command{
 	GroupID: groupMain,
 	Use:     "hello",
+	Aliases: []string{"hi"},
 	Short:   "Say hello",
 	Run: func(cmd *cobra.Command, args []string) {
 		count, _ := cmd.Flags().GetInt("count")
@@ -36,6 +37,7 @@ var helloCmd = &cobra.Command{
 var byeCmd = &cobra.Command{
 	GroupID: groupMain,
 	Use:     "bye",
+	Aliases: []string{"goodbye", "farewell"},
 	Short:   "Say goodbye",
 	Run: func(cmd *cobra.Command, args []string) {
 		name, _ := cmd.Flags().GetString("name")
