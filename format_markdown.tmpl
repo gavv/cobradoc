@@ -26,7 +26,7 @@
 
 ### {{ $group.Title }}
 {{ range $command := $group.Commands -}}
-{{ if $renderHierarchy }}{{ tocIndent $command.Level }}{{ end }}* [{{ $command.Path }}]({{ $command.Path | anchor }})
+{{ if $renderHierarchy }}{{ tocIndent $command.Level }}{{ end }}- [{{ $command.Path }}]({{ $command.Path | anchor }})
 {{ end -}}
 {{- end }}
 

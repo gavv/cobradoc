@@ -14,12 +14,12 @@ example [command] [global flags] [command flags]
 ```
 
 ### Commands
-* [example main](#example-main)
-  * [example main hello](#example-main-hello)
-  * [example main bye](#example-main-bye)
-* [example docs](#example-docs)
-  * [example docs man](#example-docs-man)
-  * [example docs markdown](#example-docs-markdown)
+- [example main](#example-main)
+    - [example main hello](#example-main-hello)
+    - [example main bye](#example-main-bye)
+- [example docs](#example-docs)
+    - [example docs man](#example-docs-man)
+    - [example docs markdown](#example-docs-markdown)
 
 
 # Commands

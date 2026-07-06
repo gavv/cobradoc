@@ -81,7 +81,7 @@ var formatFuncs = map[Format]template.FuncMap{
 			return strings.Repeat("#", base+level)
 		},
 		"tocIndent": func(level int) string {
-			return strings.Repeat("  ", level)
+			return strings.Repeat("    ", level)
 		},
 	},
 }
